@@ -1,0 +1,12 @@
+{
+  "name": "socketio",
+  "description": "An app using socketio that's deployable on awsbox",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "socket.io": "*"
+  },
+  "devDependencies": {
+    "awsbox": "git://github.com/lloyd/awsbox.git#nginx_to_http_proxy"
+  }
+}
