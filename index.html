@@ -11,7 +11,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script>
-  var socket = io.connect('http://localhost:3000');
+  var socket = io.connect('/');
   socket.on('chat', function (data) {
     $("pre").text($("pre").text() + "\n" + data);
     console.log(data);
