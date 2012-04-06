@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "socket.io": "*"
+    "socket.io": "0.9.5",
+    "express": "2.5.9"
   },
   "devDependencies": {
     "awsbox": "git://github.com/lloyd/awsbox.git#nginx_to_http_proxy"
