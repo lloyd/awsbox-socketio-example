@@ -7,9 +7,20 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
+var clients = [];
+
+function broadcast(msg) {
+  clients.forEach(function(socket) {
+    socket.emit('chat', msg);
+  });
+}
+
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  clients.push(socket);
+  socket.on('chat', function (data) {
+    broadcast(data);
+  });
+  socket.on('disconnect', function (data) {
+    clients.splice(clients.indexOf(socket), 1);
   });
 });

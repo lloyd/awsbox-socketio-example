@@ -1,8 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>socket.io example on awsbox</title></head>
+<body>
+  Type a message<br/>
+  <input/> <button> send it </button>
+  <br/><br/>
+  See them messages
+  <pre></pre>
+</body>
 <script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script>
-  var socket = io.connect('http://localhost');
-  socket.on('news', function (data) {
+  var socket = io.connect('http://localhost:3000');
+  socket.on('chat', function (data) {
+    $("pre").text($("pre").text() + "\n" + data);
     console.log(data);
-    socket.emit('my other event', { my: 'data' });
+  });
+
+  $("button").click(function() {
+    var msg = $.trim($("input").val());
+    console.log("sending", msg);
+    socket.emit("chat", msg);
   });
 </script>
+</html>
